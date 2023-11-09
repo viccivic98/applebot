@@ -1,0 +1,160 @@
+<?xml version="1.0" ?>
+
+<robot name="applebot" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find applebot)/urdf/common_macros.xacro" />
+
+    <!-- <gazebo>
+        <static>true</static>
+    </gazebo> -->
+
+    <xacro:property name="density_pla" value="600" />
+
+    <!--############################### -->
+    <!-- MOBILE PLATFORM -->
+    <!--############################### -->
+
+    <link name="base_footprint"/>
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="mobile_base_link" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <!-- MOBILE BASE -->
+    <!-- ==================================== -->
+    <link name="mobile_base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(find applebot)/meshes/base.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="1 0.600 0.350"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_box length="1" width="0.600" height="0.350" density="${density_pla}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </link>
+
+    <!-- FRONT LEFT WHEEL -->
+    <!-- ==================================== -->
+    <joint type="continuous" name="front_left_wheel_joint">
+        <origin xyz="0 -0.100 0.100" rpy="-${pi/2} 0 ${pi/2}"/>
+        <child link="front_left_wheel_link"/>
+        <parent link="mobile_base_link"/>
+        <axis xyz="0 0 1" rpy="0 0 0"/>
+        <limit effort="1000" velocity="1000"/>
+        <dynamics damping="0.7" friction="1.0"/>
+    </joint>
+
+    <link name="front_left_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(find applebot)/meshes/wheel.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.1" radius="0.1" />
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder radius="0.1" length="0.1" density="${density_pla}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- FRONT RIGHT WHEEL -->
+    <!-- ==================================== -->
+    <joint type="continuous" name="front_right_wheel_joint">
+        <origin xyz="0.600 -0.099 0.100" rpy="-${pi/2} 0 -${pi/2}"/>
+        <child link="front_right_wheel_link"/>
+        <parent link="mobile_base_link"/>
+        <axis xyz="0 0 1" rpy="0 0 0"/>
+        <limit effort="1000" velocity="1000"/>
+        <dynamics damping="0.7" friction="1.0"/>
+    </joint>
+
+    <link name="front_right_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(find applebot)/meshes/wheel.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.1" radius="0.1" />
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder radius="0.1" length="0.1" density="${density_pla}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+
+    <!-- BACK RIGHT WHEEL -->
+    <!-- ==================================== -->
+    <joint type="continuous" name="back_right_wheel_joint">
+        <origin xyz="0.600 -0.900 0.100" rpy="-${pi/2} 0 -${pi/2}"/>
+        <child link="back_right_wheel_link"/>
+        <parent link="mobile_base_link"/>
+        <axis xyz="0 0 1" rpy="0 0 0"/>
+        <limit effort="1000" velocity="1000"/>
+        <dynamics damping="0.7" friction="1.0"/>
+    </joint>
+
+    <link name="back_right_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(find applebot)/meshes/wheel.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.1" radius="0.1" />
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder radius="0.1" length="0.1" density="${density_pla}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- BACK LEFT WHEEL -->
+    <!-- ==================================== -->
+    <joint type="continuous" name="back_left_wheel_joint">
+        <origin xyz="0 -0.900 0.100" rpy="-${pi/2} 0 ${pi/2}"/>
+        <child link="back_left_wheel_link"/>
+        <parent link="mobile_base_link"/>
+        <axis xyz="0 0 1" rpy="0 0 0"/>
+        <limit effort="1000" velocity="1000"/>
+        <dynamics damping="0.7" friction="1.0"/>
+    </joint>
+
+    <link name="back_left_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="$(find applebot)/meshes/wheel.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.1" radius="0.1" />
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder radius="0.1" length="0.1" density="${density_pla}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+</robot>
