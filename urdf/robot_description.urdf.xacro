@@ -2,6 +2,7 @@
 
 <robot name="applebot" xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:include filename="$(find applebot)/urdf/common_macros.xacro" />
+    <xacro:include filename="$(find applebot)/urdf/robot_control.gazebo.xacro" />
 
     <!-- <gazebo>
         <static>true</static>
@@ -31,12 +32,12 @@
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0.3 -0.5 0.2" rpy="0 0 0"/>
             <geometry>
-                <box size="1 0.600 0.350"/>
+                <box size="0.600 1 0.4"/>
             </geometry>
         </collision>
-        <xacro:inertial_box length="1" width="0.600" height="0.350" density="${density_pla}">
+        <xacro:inertial_box length="0.600" width="1" height="0.350" density="${density_pla}">
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
@@ -60,9 +61,9 @@
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
             <geometry>
-                <cylinder length="0.1" radius="0.1" />
+                <cylinder length="0.08" radius="0.1" />
             </geometry>
         </collision>
         <xacro:inertial_cylinder radius="0.1" length="0.1" density="${density_pla}">
@@ -89,9 +90,9 @@
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
             <geometry>
-                <cylinder length="0.1" radius="0.1" />
+                <cylinder length="0.08" radius="0.1" />
             </geometry>
         </collision>
         <xacro:inertial_cylinder radius="0.1" length="0.1" density="${density_pla}">
@@ -119,9 +120,9 @@
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
             <geometry>
-                <cylinder length="0.1" radius="0.1" />
+                <cylinder length="0.08" radius="0.1" />
             </geometry>
         </collision>
         <xacro:inertial_cylinder radius="0.1" length="0.1" density="${density_pla}">
@@ -148,9 +149,9 @@
             </geometry>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
             <geometry>
-                <cylinder length="0.1" radius="0.1" />
+                <cylinder length="0.08" radius="0.1" />
             </geometry>
         </collision>
         <xacro:inertial_cylinder radius="0.1" length="0.1" density="${density_pla}">
