@@ -1,5 +1,1 @@
-# semesterprosjektApplebot
-
-
-
-# Test test test test test test
+# Semesterprosjekt Applebot i ROS
