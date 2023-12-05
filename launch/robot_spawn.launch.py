@@ -9,6 +9,7 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 import xacro
 
+from launch.actions import ExecuteProcess
 
 def generate_launch_description():
     # Get the path to the Gazebo world file
@@ -55,8 +56,8 @@ def generate_launch_description():
             '-x', robot_pos[0], '-y', robot_pos[1], '-z', robot_pos[2], '-Y', robot_yaw
         ],
         output='screen'
-    )
 
+)
     return LaunchDescription([
         sim_time_arg,
         node_robot_state_publisher,
